@@ -81,3 +81,34 @@ The port for your API server
 When you finished the configuration, you just need to run this command
 
 `npm run serve`
+
+## Routes
+
+If you want to scan URLs, you can use this route
+
+### /scan - ['GET']
+
+**Query Strings**
+
+*url*: Must be an URL
+
+**Example**
+
+`http://localhost:3000/scan?url=https://secure.eicar.org/eicar.com.txt`
+
+### /scan - ['POST']
+
+**Params**
+
+*file*: Must be a file
+
+**Example**
+
+`http://localhost:3000/scan`
+
+```
+curl --request POST \
+  --url http://localhost:3000/scan \
+  --header 'content-type: multipart/form-data' \
+  --form file=@testfile.dll
+```
