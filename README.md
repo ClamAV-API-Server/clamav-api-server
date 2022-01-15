@@ -1,8 +1,10 @@
 # ClamAV API Server
 
-This repo based on [`kylefarris/clamscan`](https://github.com/kylefarris/clamscan)
+This repo is based on [`kylefarris/clamscan`](https://github.com/kylefarris/clamscan).
 
-Before you use this API you need to install ClamAV in your server.
+This API server will help you to scan urls and files remotely.
+
+Before you use this API you need to install ClamAV on your server.
 
 ## ClamAV Installation
 
@@ -12,11 +14,11 @@ There are several Linux distros. You can install ClamAV like that;
 
 `sudo yum install clamav`
 
-I didn't tested this manual on other Linux distros but you may edit this file;
+I didn't test this manual on other Linux distros but you may edit this file;
 
 `/etc/clamav/clamd.conf`
 
-Then you need to put this line top of this file
+After that, you need to put this line at the beginning of this file.
 
 `TCPSocket 3310`
 
@@ -28,9 +30,9 @@ Then you need to put this line top of this file
 
 `sudo brew install clamav`
 
-Once you install clamav to your favorite distro, you need to open a TCP socket.
+Once you install ClamAV to your favorite distro, you need to open a TCP socket.
 
-If you use Debian based distros, you can follow this command;
+If you use Debian based distros, you can follow these commands;
 
 `sudo dpkg-reconfigure clamav-daemon`
 
@@ -38,15 +40,15 @@ Then you have to allow port you set for clamav socket using ufw;
 
 `sudo ufw allow 3310/tcp`
 
-After at all, you need to restart clamav daemon.
+Finally, you need to restart the ClamAV daemon.
 
 ## Running Up API Server
 
-To run API server, you have to install dependencies.
+To run the API server, you have to install dependencies.
 
 `npm i`
 
-Then you need to change some variables to create connection between server and clamav
+Then you need to change some variables to create a connection between the server and ClamAV
 
 ```dotenv
 CLAM_HOST=YOURT_HOST
@@ -70,12 +72,12 @@ If you set this true, you'll see debug logs from `clamscan` library.
 
 **RELOAD_DB**
 
-If you set this true, your clamav database will be updated but it may work slow.
+If you set this true, your ClamAV database will be updated but it may work slow.
 
 **SERVER_PORT**
 
 The port for your API server
 
-When you done configuration, you just need to run this command
+When you finished the configuration, you just need to run this command
 
 `npm run serve`
