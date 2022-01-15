@@ -113,6 +113,20 @@ curl --request POST \
   --form file=@testfile.dll
 ```
 
+The response will be like that
+
+```json
+{
+  "file": null,
+  "isInfected": true,
+  "viruses": [
+    "Win.Test.EICAR_HDB-1"
+  ],
+  "resultString": "stream: Win.Test.EICAR_HDB-1 FOUND\u0000",
+  "timeout": false
+}
+```
+
 ## Contributors
 
 ![Contributors](https://contrib.rocks/image?repo=aligoren/clamav-api-server)
