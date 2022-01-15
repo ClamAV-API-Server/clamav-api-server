@@ -112,3 +112,7 @@ curl --request POST \
   --header 'content-type: multipart/form-data' \
   --form file=@testfile.dll
 ```
+
+## Contributors
+
+![Contributors](https://contrib.rocks/image?repo=aligoren/clamav-api-server)
