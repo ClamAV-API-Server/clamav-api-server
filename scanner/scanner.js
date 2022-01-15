@@ -16,12 +16,11 @@ class Scanner {
 
     async init() {
         this.clamScan = await new NodeClam().init({
-            debugMode: false,
+            debugMode: process.env.CLAM_DEBUG === 'true',
             clamscan: {
                 active: false
             },
             clamdscan: {
-                bypass_test: true,
                 host: process.env.CLAM_HOST,
                 port: process.env.CLAM_PORT,
                 reloadDb: process.env.RELOAD_DB === 'true'
