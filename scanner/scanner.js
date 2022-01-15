@@ -29,7 +29,11 @@ class Scanner {
     }
 
     async #scan(file) {
-        return await this.clamScan.isInfected(file);
+        const result = await this.clamScan.isInfected(file);
+
+        fs.unlinkSync(file);
+
+        return result;
     }
 
     async urlScan(url) {
@@ -44,7 +48,7 @@ class Scanner {
 
             this.result = await this.#scan(scanFile);
 
-            fs.unlinkSync(scanFile)
+            
         } catch (err) {
             this.result.resultString = `Unexpected error: ${err}`
         }
@@ -55,8 +59,6 @@ class Scanner {
     async fileScan(file) {
         try {
             this.result = await this.#scan(file);
-
-            fs.unlinkSync(file)
         } catch (err) {
             this.result.resultString = `Unexpected error: ${err}`
         }
