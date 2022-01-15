@@ -1,0 +1,19 @@
+{
+  "name": "clam-scan-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "clamscan": "^2.0.1",
+    "dotenv": "^12.0.3",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1"
+  }
+}

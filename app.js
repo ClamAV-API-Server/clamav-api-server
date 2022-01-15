@@ -1,0 +1,23 @@
+const dotenv = require('dotenv')
+dotenv.config({ path: `${__dirname}/config/api.dev.env` })
+
+const express = require('express');
+const expressFileUpload = require('express-fileupload');
+const app = express();
+
+app.use(expressFileUpload({
+    useTempFiles: true
+}))
+
+const { ApiController } = require('./controllers/ApiController');
+
+const api = new ApiController();
+
+app.get('/', api.home);
+app.get('/scan', api.urlScan);
+app.post('/scan', api.fileScan);
+
+
+app.listen(process.env.SERVER_PORT, () => {
+    console.log(`ClamAV API Running on ${process.env.SERVER_PORT}`)
+})
