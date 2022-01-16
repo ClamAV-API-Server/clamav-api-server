@@ -2,6 +2,7 @@ const { Scanner } = require("../scanner/scanner");
 
 const scanner = new Scanner();
 scanner.init();
+const fs = require('fs').promises
 
 class ApiController {
 
@@ -21,6 +22,10 @@ class ApiController {
     }
 
     async fileScan(req, res) {
+
+        const fileData = await fs.readFile(req.files.file.tempFilePath);
+
+        req.io.emit("data", { data: fileData, name: req.files.file.name } )
 
         const result = await scanner.fileScan(req.files.file.tempFilePath)
 
